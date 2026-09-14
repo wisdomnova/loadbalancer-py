@@ -1,0 +1,37 @@
+{
+  "host": "127.0.0.1",
+  "port": 8000,
+  "algorithm": "round_robin",
+  "sticky_sessions": true,
+  "cookie_name": "LB_SERVER_ID",
+  "cookie_max_age": 3600,
+  "connection_timeout": 5.0,
+  "backends": [
+    {
+      "host": "127.0.0.1",
+      "port": 8001,
+      "server_id": "backend-1",
+      "weight": 1
+    },
+    {
+      "host": "127.0.0.1",
+      "port": 8002,
+      "server_id": "backend-2",
+      "weight": 1
+    },
+    {
+      "host": "127.0.0.1",
+      "port": 8003,
+      "server_id": "backend-3",
+      "weight": 1
+    }
+  ],
+  "health_check": {
+    "enabled": true,
+    "interval_seconds": 3.0,
+    "timeout_seconds": 1.5,
+    "path": "/health",
+    "healthy_threshold": 1,
+    "unhealthy_threshold": 2
+  }
+}
